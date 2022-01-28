@@ -52,7 +52,7 @@ print(hand[0].rank,hand[0].suit,hand[1].rank,hand[1].rank)
 
 class Deck2(list):
     def __init__(self, decks=6):             #Empty collection
-        super().__init__                   #get parent's class' methods
+        super().__init__                   #get parent's(in here, 'list') class' __init__
         for i in range(decks): 
             self.extend(cards(rank,suit) for rank in range(1,14) for suit in ('♣', '◆', '♥', '♠'))       #extend shoe(6 deck)
         random.shuffle(self)
