@@ -52,7 +52,8 @@ print(hand[0].rank,hand[0].suit,hand[1].rank,hand[1].rank)
 
 class Deck2:
     def __init__(self, decks=1):
-        super().__init__() for i in range(decks): self.extend(cards(rank,suit) for rank in range(1,14) for suit in ('♣', '◆', '♥', '♠'))
+        super().__init__() 
+        for i in range(decks): self.extend(cards(rank,suit) for rank in range(1,14) for suit in ('♣', '◆', '♥', '♠'))
         random.shuffle(self)
         burn=random.randint(1,52)             # 
         for i in range(burn): self.pop()
