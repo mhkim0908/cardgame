@@ -50,10 +50,29 @@ hand = [d.pop(), d.pop()]
 print(hand[0].rank,hand[0].suit,hand[1].rank,hand[1].rank)
 
 
-class Deck2:
-    def __init__(self, decks=1):
-        super().__init__() 
-        for i in range(decks): self.extend(cards(rank,suit) for rank in range(1,14) for suit in ('♣', '◆', '♥', '♠'))
+class Deck2(list):
+    def __init__(self, decks=6):             #Empty collection
+        super().__init__                   #get parent's class' methods
+        for i in range(decks): 
+            self.extend(cards(rank,suit) for rank in range(1,14) for suit in ('♣', '◆', '♥', '♠'))       #extend shoe(6 deck)
         random.shuffle(self)
-        burn=random.randint(1,52)             # 
-        for i in range(burn): self.pop()
+        burn=random.randint(1,52)             # It means discarding the few first cards without playing it before the start of the game.
+        for i in range(burn): 
+            self.pop()  
+        
+
+class Hand:
+    def __init__(self, dealer_card, *cards):
+        self.dealer_card = dealer_card
+        self.cards = list(cards)
+
+    def hand_total(self):
+        return sum(c.hand for c in self.cards)
+    
+    def soft_total(self):
+        return sum(c.hand for c in self.cards)
+
+d2 = Deck2()
+h = Hand(d.pop(),d.pop(),d.pop())
+
+print(h.cards[0].rank)
