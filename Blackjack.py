@@ -1,3 +1,4 @@
+#written with python 3.10.2 64-bit 
 import random
 
 class Card:
@@ -72,7 +73,27 @@ class Hand:
     def soft_total(self):
         return sum(c.hand for c in self.cards)
 
-d2 = Deck2()
-h = Hand(d.pop(),d.pop(),d.pop())
+#d2 = Deck2()
+#h = Hand(d.pop(),d.pop(),d.pop())
 
 print(h.cards[0].rank)
+
+class Hand5:
+    def __init__(self, dealer_card, *cards):
+        self.dealer_card = dealer_card
+        slef.cards = list(cards)
+    @staticmethod
+    def freeze(other):
+        hand = Hand5(other.dealer_card, *other.cards)
+        return hand
+    @staticmethod
+    def split(other, card0, card1):
+        hand0 = Hand5(other.dealer_card, other.cards[0], card0)
+        hand1 = Hand5(other.dealer_card, other.cards[1], card1)
+        return hand0, hand1
+    def __str__(self):
+        return ",".join(map(str, self.cards))
+
+d = Deck()
+h = Hand5(d.pop(),d.pop(),d.pop())
+s1, s2 = Hand5.split(h,d.pop(),d.pop())
