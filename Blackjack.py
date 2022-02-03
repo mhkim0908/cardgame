@@ -45,10 +45,10 @@ class Deck:
     def pop(self):
         return self._cards.pop()
 
-d = Deck()
-hand = [d.pop(), d.pop()]
+#d = Deck()
+#hand = [d.pop(), d.pop()]
 
-print(hand[0].rank,hand[0].suit,hand[1].rank,hand[1].rank)
+#print(hand[0].rank,hand[0].suit,hand[1].rank,hand[1].rank)
 
 
 class Deck2(list):
@@ -76,12 +76,12 @@ class Hand:
 #d2 = Deck2()
 #h = Hand(d.pop(),d.pop(),d.pop())
 
-print(h.cards[0].rank)
+#print(h.cards[0].rank)
 
 class Hand5:
     def __init__(self, dealer_card, *cards):
         self.dealer_card = dealer_card
-        slef.cards = list(cards)
+        self.cards = list(cards)
     @staticmethod
     def freeze(other):
         hand = Hand5(other.dealer_card, *other.cards)
@@ -97,3 +97,5 @@ class Hand5:
 d = Deck()
 h = Hand5(d.pop(),d.pop(),d.pop())
 s1, s2 = Hand5.split(h,d.pop(),d.pop())
+
+#print(s1.cards[0].rank,s1.cards[0].suit, s2.cards[0].rank)
